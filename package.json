@@ -1,7 +1,7 @@
 {
-  "name": "test-svg-performance",
+  "name": "compare-sprite-methods",
   "version": "1.0.0",
-  "description": "Benchmark load performance of various sprite methods",
+  "description": "Compare various sprite methods",
   "author": "Andrey Kuzmin <andrey.kuzmin@zalando.de>",
   "license": "MIT",
   "devDependencies": {
