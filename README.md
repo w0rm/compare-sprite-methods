@@ -4,5 +4,5 @@
 
 * clone this repo
 * `npm i`
-* `gulp server`
+* `npm run server`
 * open http://localhost:8888 in browser

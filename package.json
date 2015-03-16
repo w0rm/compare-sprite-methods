@@ -4,6 +4,9 @@
   "description": "Compare various sprite methods",
   "author": "Andrey Kuzmin <andrey.kuzmin@zalando.de>",
   "license": "MIT",
+  "scripts": {
+      "server": "gulp server"
+  },
   "devDependencies": {
     "cheerio": "^0.18.0",
     "connect": "^3.2.0",
@@ -25,6 +28,10 @@
     "lodash": "^2.4.1",
     "require-dir": "^0.1.0",
     "serve-static": "^1.6.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zalando/compare-sprite-methods.git"
   },
   "dependencies": {
     "evil-icons": "^1.7.2"
