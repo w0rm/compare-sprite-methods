@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Сombined SVG icons with symbol tags</title>
+    <script src="js/test.js"></script>
+    <style>
+        .icon {
+            display: inline-block;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body>
+    <script>
+    (function (document) {
+        'use strict';
+        var supportsSvg  = (function() {
+            // Detect inline svg support
+            var div = document.createElement('div');
+            div.innerHTML = '<svg/>';
+            return (div.firstChild && div.firstChild.namespaceURI) === 'http://www.w3.org/2000/svg';
+        })();
+
+        if (supportsSvg) {
+            var script = [].slice.call(document.getElementsByTagName('script'), 0).pop();
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                var div = document.createElement('div');
+                div.innerHTML = this.responseText;
+                div.style.display = 'none';
+                script.parentNode.insertBefore(div, script);
+            };
+            xhr.open('get', '/img/icons.svg', true);
+            xhr.send();
+        }
+    })(document);
+    </script>
+    <!-- inject:svg --><!-- endinject -->
+</body>
+</html>

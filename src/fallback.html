@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Сombined SVG icons with symbol tags and CSS Sprite fallback</title>
+    <script src="js/test.js"></script>
+    <style>
+        .icon {
+            display: inline-block;
+            vertical-align: middle
+        }
+        .icon > svg {
+            display: block;
+            fill: currentColor;  // allow color property to control fill color
+            pointer-events: none;  // prevent svg from being a target of the delegated event http://css-tricks.com/links-inline-svg-staying-target-events/
+        }
+        .no-js .icon > svg {
+            display: none;  // fallback CSS is served in <noscript> tag so we have to hide SVG
+        }
+    </style>
+    <noscript>
+        <link rel="stylesheet" href="/css/fallback.css">
+    </noscript>
+</head>
+<body class="no-js">
+    <script>
+    (function (document) {
+        'use strict';
+
+        // Remove no-js class
+        document.getElementsByTagName('body')[0].removeAttribute('class');
+
+        var supportsSvg  = (function() {
+            // Detect inline svg support
+            var div = document.createElement('div');
+            div.innerHTML = '<svg/>';
+            return (div.firstChild && div.firstChild.namespaceURI) === 'http://www.w3.org/2000/svg';
+        })();
+
+        if (supportsSvg) {
+            // Load combined svg file (with symbols) into body
+            var script = [].slice.call(document.getElementsByTagName('script'), 0).pop();
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                var div = document.createElement('div');
+                div.innerHTML = this.responseText;
+                div.style.display = 'none';
+                script.parentNode.insertBefore(div, script);
+            };
+            xhr.open('get', '/img/icons.svg', true);
+            xhr.send();
+        } else {
+            // Load fallback stylesheet
+            var head = document.getElementsByTagName('head')[0];
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = '/css/fallback.css';
+            head.appendChild(link);
+        }
+
+    })(document);
+    </script>
+    <!-- inject:svg --><!-- endinject -->
+</body>
+</html>
