@@ -7,5 +7,5 @@
 * `npm run server`
 * open http://localhost:8888 in browser
 
-See our blog post about creating bulletproof SVG icons: http://tech.zalando.com/posts/creating-bulletproof-svg-icons.html 
+See my blog post about creating bulletproof SVG icons: https://jobs.zalando.com/tech/blog/creating-bulletproof-svg-icons/
 
